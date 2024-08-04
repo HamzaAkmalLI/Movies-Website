@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoviesallDay - Movies</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4097465911996718"
+     crossorigin="anonymous"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {"50":"#fdf2f8","100":"#fce7f3","200":"#fbcfe8","300":"#f9a8d4","400":"#f472b6","500":"#ec4899","600":"#db2777","700":"#be185d","800":"#9d174d","900":"#831843"}
+                    }
+                }
+            }
+        }
+    </script>
+  <style>
+    #mobileMenu {
+        transition: right 0.3s ease-in-out;
+        right: -100%;
+    }
+    #mobileMenu.open {
+        right: 0;
+    }
+</style>
+</head>
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-white transition-colors duration-300">
+    <header class="bg-white bg-opacity-90 dark:bg-gray-800 dark:bg-opacity-90 p-4 flex justify-between items-center fixed w-full z-10 shadow-md">
+        <div class="text-3xl font-bold text-primary-600 dark:text-primary-400">Movies All Day</div>
+        <nav class="hidden md:flex space-x-6 items-center">
+            <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 transition duration-300">Home</a>
+            <a href="./movies.html" class="text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 transition duration-300">Movies</a>
+            <a href="./ourteam.html" class="text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 transition duration-300">Our Team</a>
+        </nav>
+        <button id="themeToggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-500">
+            <svg class="w-6 h-6 text-gray-800 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+            </svg>
+        </button>
+        <button id="mobileMenuToggle" class="md:hidden p-2 rounded-full bg-gray-200 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-500">
+            <svg class="w-6 h-6 text-gray-800 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+    </header>
+    
+    <nav id="mobileMenu" class="fixed top-0 bottom-0 right-0 w-64 bg-white dark:bg-gray-900 p-4 shadow-lg z-20">
+        <button id="mobileMenuClose" class="mb-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-500">
+            <svg class="w-6 h-6 text-gray-800 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <a href="index.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 transition duration-300">Home</a>
+        <a href="./movies.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 transition duration-300">Movies</a>
+        <a href="./ourteam.html" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 transition duration-300">Our Team</a>
+    </nav>
+
+    <main class="pt-20">
+        <section class="gradient-bg text-white py-20 px-4">
+            <div class="container mx-auto text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">Explore Our Movies</h1>
+                <p class="text-xl mb-8">Discover the best of Hollywood, Bollywood, and Lollywood</p>
+            </div>
+        </section>
+
+        <section class="py-12 px-4">
+            <div class="flex flex-wrap justify-center mb-8 gap-4">
+                <button class="category-btn bg-primary-500 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-primary-600 transition duration-300" data-category="hollywood">Hollywood</button>
+                <button class="category-btn bg-primary-500 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-primary-600 transition duration-300" data-category="bollywood">Bollywood</button>
+                <button class="category-btn bg-primary-500 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-primary-600 transition duration-300" data-category="lollywood">Lollywood</button>
+            </div>
+            <div id="movieGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Movie cards will be dynamically added here -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Movies all Day - All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const movies = {
+            hollywood: [
+                { title: "Inception", image: "https://picsum.photos/200/300?random=1" },
+                { title: "The Shawshank Redemption", image: "https://picsum.photos/200/300?random=2" },
+                { title: "The Godfather", image: "https://picsum.photos/200/300?random=3" },
+                { title: "Pulp Fiction", image: "https://picsum.photos/200/300?random=4" },
+                { title: "The Dark Knight", image: "https://picsum.photos/200/300?random=5" },
+                { title: "Forrest Gump", image: "https://picsum.photos/200/300?random=6" },
+                { title: "The Matrix", image: "https://picsum.photos/200/300?random=7" },
+                { title: "Goodfellas", image: "https://picsum.photos/200/300?random=8" },
+                { title: "Schindler's List", image: "https://picsum.photos/200/300?random=9" },
+                { title: "Fight Club", image: "https://picsum.photos/200/300?random=10" }
+            ],
+            bollywood: [
+                { title: "Dilwale Dulhania Le Jayenge", image: "https://picsum.photos/200/300?random=11" },
+                { title: "3 Idiots", image: "https://picsum.photos/200/300?random=12" },
+                { title: "Lagaan", image: "https://picsum.photos/200/300?random=13" },
+                { title: "PK", image: "https://picsum.photos/200/300?random=14" },
+                { title: "Dangal", image: "https://picsum.photos/200/300?random=15" },
+                { title: "Kabhi Khushi Kabhie Gham", image: "https://picsum.photos/200/300?random=16" },
+                { title: "Bajrangi Bhaijaan", image: "https://picsum.photos/200/300?random=17" },
+                { title: "Chennai Express", image: "https://picsum.photos/200/300?random=18" },
+                { title: "Kuch Kuch Hota Hai", image: "https://picsum.photos/200/300?random=19" },
+                { title: "Padmaavat", image: "https://picsum.photos/200/300?random=20" }
+            ],
+            lollywood: [
+                { title: "Khel Khel Mein", image: "https://picsum.photos/200/300?random=21" },
+                { title: "Punjab Nahi Jaungi", image: "https://picsum.photos/200/300?random=22" },
+                { title: "Waar", image: "https://picsum.photos/200/300?random=23" },
+                { title: "Actor in Law", image: "https://picsum.photos/200/300?random=24" },
+                { title: "Na Maloom Afraad", image: "https://picsum.photos/200/300?random=25" },
+                { title: "Jawani Phir Nahi Ani", image: "https://picsum.photos/200/300?random=26" },
+                { title: "Bol", image: "https://picsum.photos/200/300?random=27" },
+                { title: "Bin Roye", image: "https://picsum.photos/200/300?random=28" },
+                { title: "Cake", image: "https://picsum.photos/200/300?random=29" },
+                { title: "Manto", image: "https://picsum.photos/200/300?random=30" }
+            ]
+        };
+
+        function createMovieCard(movie) {
+            return `
+               <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl overflow-hidden transform transition duration-300 hover:scale-105 movie-card">
+                    <img src="${movie.image}" alt="${movie.title}" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2 text-primary-600 dark:text-primary-400">${movie.title}</h3>
+                        <a href="./ourteam.html" class="block bg-primary-500 text-white text-center px-4 py-2 rounded-full text-sm hover:bg-primary-600 transition duration-300">Watch Now</a>
+                    </div>
+                </div>
+            `;
+        }
+
+        function displayMovies(category) {
+            const movieGrid = document.getElementById('movieGrid');
+            movieGrid.innerHTML = movies[category].map(createMovieCard).join('');
+        }
+
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const category = e.target.dataset.category;
+                displayMovies(category);
+            });
+        });
+
+        // Initially display Hollywood movies
+        displayMovies('hollywood');
+
+        // Theme toggle function
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        // Mobile menu toggle function
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('open');
+            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        }
+
+        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+        mobileMenuClose.addEventListener('click', toggleMobileMenu);
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (mobileMenu.classList.contains('open') && !mobileMenu.contains(event.target) && event.target !== mobileMenuToggle) {
+                toggleMobileMenu();
+            }
+        });
+    </script>
+</body>
+</html>
